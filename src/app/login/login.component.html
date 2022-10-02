@@ -1,0 +1,65 @@
+<div class="cardContainer">
+    <mat-card class="formCard" >
+        <mat-card-title>Login</mat-card-title>
+        <form [formGroup]="form">
+            <div class="container">
+                <label for="nombre"> Nombre </label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu nombre"
+                    formControlName="nombre"
+                    name="nombre"
+                />
+                <br>
+                <label for="apellido">Apellido</label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu apellido"
+                    formControlName="apellido"
+                    name="apellido"
+                />
+                <br>
+                <label for="nombreUsuario">Nombre de Usuario</label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu Nombre de Usuario"
+                    formControlName="nombreUsuario"
+                    name="nombreUsuario"
+                />
+                <br>
+                <label for="contrasena">Contraseña</label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu Contraseña"
+                    formControlName="contrasena"
+                    name="contrasena"
+                />
+                <br>
+                <label for="confirmarContrasena">Confirmar Contraseña</label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu Confirmar Contraseña"
+                    formControlName="confirmarContrasena"
+                    name="confirmarContrasena"
+                />
+                <br>
+                <label for="pais">Pais</label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu Pais"
+                    formControlName="pais"
+                    name="pais"
+                />
+                <br>
+                <label for="ciudad">Ciudad</label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu Ciudad"
+                    formControlName="ciudad"
+                    name="ciudad"
+                />
+            </div>
+        </form>
+    </mat-card>
+</div>
+
