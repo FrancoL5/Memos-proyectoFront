@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 15rem;
+}
+.cardContainer{
+    display: flex;
+    justify-content: center;
+    /* padding: 0.25rem; */
+    /* width: 25rem; */
+}
+
+.formCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* max-width: 25rem; */
+    width: 20rem;
+    padding: 2rem;
+}
+#loginForm{
+    display: flex;
+    flex-direction: column;
+}
+.invalidInput{
+    color: #ff1744;
+}
