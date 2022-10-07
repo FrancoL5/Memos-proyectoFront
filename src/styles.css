@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body{
     background: rgb(181,51,170);
-background: linear-gradient(145deg, rgba(181,51,170,1) 30%, rgba(205,29,29,1) 51%, rgba(0,212,255,1) 93%);
+    background: linear-gradient(145deg, rgba(181,51,170,1) 30%, rgba(205,29,29,1) 51%, rgba(0,212,255,1) 93%);
     color: black;
     height: 100%;
-    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }

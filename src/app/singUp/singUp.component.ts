@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from '../usuarios.service';
-import {Subscription} from "rxjs"
-
+import { Subscription } from 'rxjs';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
 	selector: 'app-singUp',
@@ -10,9 +10,9 @@ import {Subscription} from "rxjs"
 	styleUrls: ['./singUp.component.css'],
 })
 export class SingUpComponent implements OnDestroy {
-  constructor(private fb: FormBuilder, private Usuario: UsuarioService) {}
-  public validPassword: boolean = true;
-  public userSubscription!:Subscription;
+	constructor(private fb: FormBuilder, private Usuario: UsuarioService) {}
+	public validPassword: boolean = true;
+	public userSubscription!: Subscription;
 
 	form: FormGroup = this.fb.group({
 		nombre: [, [Validators.required]],
@@ -30,18 +30,21 @@ export class SingUpComponent implements OnDestroy {
 		//     country,
 		//     city,
 		//     password,
-    
-    if(this.form.controls['contrasena'].value !== this.form.controls['confirmarContrasena'].value){
-      this.validPassword = false
-      return
-    }
-    this.validPassword = true
-    
-		if (this.form.invalid ) {
+
+		if (
+			this.form.controls['contrasena'].value !==
+			this.form.controls['confirmarContrasena'].value
+		) {
+			this.validPassword = false;
+			return;
+		}
+		this.validPassword = true;
+
+		if (this.form.invalid) {
 			this.form.markAllAsTouched();
 			return;
 		}
-		const {
+		let {
 			nombre: name,
 			ciudad: city,
 			nombreUsuario: user_name,
@@ -49,18 +52,21 @@ export class SingUpComponent implements OnDestroy {
 			pais: country,
 			apellido: last_name,
 		} = this.form.value;
-    
 
 		this.userSubscription = this.Usuario.createUser({
 			name,
 			city,
 			user_name,
-			password,
+			password: bcrypt.hashSync(password, 10),
 			country,
 			last_name,
-		}).subscribe(data => console.log(data))
+		}).subscribe((data) => {
+			sessionStorage.setItem("validUser", "true")
+			sessionStorage.setItem('usuario', data);
+			this.form.reset()
+		});
 	}
-  ngOnDestroy(): void {
-    this.userSubscription.unsubscribe()
-  }
+	ngOnDestroy(): void {
+		this.userSubscription.unsubscribe();
+	}
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUser } from './interfaces/IUser';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,11 +10,14 @@ import { IUser } from './interfaces/IUser';
 
 export class UsuarioService {
 
-  private URL: string = "http://localhost:3000/api/createUser"
+  private URL: string = "http://localhost:3000"
 
   constructor(private http:HttpClient) { }
-
-  createUser(user: IUser): Observable<IUser>{
-    return this.http.post<IUser>(this.URL,user,{observe:"body"})
+  validateUser(userName:string, password:string):Observable<boolean>{
+    return this.http.post<boolean>(`${this.URL}/api/users/${userName}`, { password })
+  }
+  
+  createUser(user: IUser): Observable<string>{
+    return this.http.post<string>(this.URL + "/api/createUser",user,{observe:"body"})
   }
 }

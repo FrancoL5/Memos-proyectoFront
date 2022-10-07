@@ -1,0 +1,16 @@
+#navBar{
+    display: flex;
+    gap: 0 2rem;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    height: 3rem;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+.navButton{
+    font-size: large;
+    height: 2.5rem;
+    width: 15rem;
+}

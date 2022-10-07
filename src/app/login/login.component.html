@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="cardContainer">
+    <mat-card class="formCard" >
+        <mat-card-title>Sing Up</mat-card-title>
+        <form [formGroup]="form" (ngSubmit)="login()">
+            <div class="container">
+                <label for="nombreUsuario"> nombre de Usuario </label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu nombre de Usuario"
+                    formControlName="nombreUsuario"
+                    name="nombreUsuario"
+                />
+                <p class="invalidInput" *ngIf="form.controls['nombreUsuario'].errors && form.controls['nombreUsuario'].touched">
+                    debe ser un Usuario
+                </p>
+                <br>
+                <label for="contrasena"> Contraseña </label>
+                <input
+                    type="text"
+                    placeholder="Ingresa tu Contraseña"
+                    formControlName="contrasena"
+                    name="contrasena"
+                />
+                <p class="invalidInput" *ngIf="form.controls['contrasena'].errors && form.controls['contrasena'].touched">
+                    debe ser un Usuario
+                </p>
+                <br>
+                <button mat-raised-button >Enviar Datos</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
