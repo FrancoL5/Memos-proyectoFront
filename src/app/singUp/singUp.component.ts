@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from '../usuarios.service';
 import { Subscription } from 'rxjs';
 import * as bcrypt from 'bcryptjs';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-singUp',
@@ -10,7 +11,7 @@ import * as bcrypt from 'bcryptjs';
 	styleUrls: ['./singUp.component.css'],
 })
 export class SingUpComponent implements OnDestroy {
-	constructor(private fb: FormBuilder, private Usuario: UsuarioService) {}
+	constructor(private fb: FormBuilder, private Usuario: UsuarioService, private router:Router) {}
 	public validPassword: boolean = true;
 	public userSubscription!: Subscription;
 
@@ -62,9 +63,12 @@ export class SingUpComponent implements OnDestroy {
 			last_name,
 		}).subscribe((data) => {
 			sessionStorage.setItem("validUser", "true")
-			sessionStorage.setItem('usuario', data);
-			this.form.reset()
+			sessionStorage.setItem('id', data);
+			this.router.navigate(['/user']).then(()=>{
+				window.location.reload();
+			})
 		});
+
 	}
 	ngOnDestroy(): void {
 		this.userSubscription.unsubscribe();

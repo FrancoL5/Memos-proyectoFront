@@ -11,21 +11,22 @@
                     name="nombreUsuario"
                 />
                 <p class="invalidInput" *ngIf="form.controls['nombreUsuario'].errors && form.controls['nombreUsuario'].touched">
-                    debe ser un Usuario
+                    *debe ser un Usuario Válido
                 </p>
                 <br>
                 <label for="contrasena"> Contraseña </label>
                 <input
-                    type="text"
+                    type="password"
                     placeholder="Ingresa tu Contraseña"
                     formControlName="contrasena"
                     name="contrasena"
                 />
                 <p class="invalidInput" *ngIf="form.controls['contrasena'].errors && form.controls['contrasena'].touched">
-                    debe ser un Usuario
+                    *debe ser una Contraseña Válida
                 </p>
                 <br>
                 <button mat-raised-button >Enviar Datos</button>
+                <p *ngIf="validUser" class="invalidInput"> Usuario o contraseña invalida</p>
             </div>
         </form>
     </mat-card>

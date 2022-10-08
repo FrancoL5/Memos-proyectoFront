@@ -9,10 +9,11 @@ import { MatCardModule } from '@angular/material/card'
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NavBarComponent } from './nav-bar/nav-bar.component'
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 @NgModule({
-	declarations: [AppComponent, SingUpComponent, LoginComponent, NavBarComponent],
+	declarations: [AppComponent, SingUpComponent, LoginComponent, NavBarComponent, UserprofileComponent],
 	imports: [BrowserModule, MatButtonModule, FormsModule, ReactiveFormsModule,MatCardModule, HttpClientModule, AppRoutingModule],
 	providers: [],
 	bootstrap: [AppComponent],
