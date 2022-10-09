@@ -11,10 +11,11 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import {MatTableModule} from '@angular/material/table'
 
 @NgModule({
 	declarations: [AppComponent, SingUpComponent, LoginComponent, NavBarComponent, UserprofileComponent],
-	imports: [BrowserModule, MatButtonModule, FormsModule, ReactiveFormsModule,MatCardModule, HttpClientModule, AppRoutingModule],
+	imports: [BrowserModule, MatButtonModule, FormsModule, ReactiveFormsModule,MatCardModule, HttpClientModule, AppRoutingModule, MatTableModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })

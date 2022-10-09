@@ -24,6 +24,7 @@ export class NavBarComponent implements OnInit {
 	logOut (){
 		sessionStorage.removeItem("validUser")
 		sessionStorage.removeItem("id")
+		sessionStorage.removeItem("userName")
 		this.ngOnInit()
 		this.router.navigate(['/login'])
 	}

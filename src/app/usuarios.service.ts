@@ -13,11 +13,15 @@ export class UsuarioService {
   private URL: string = "http://localhost:3000"
 
   constructor(private http:HttpClient) { }
-  validateUser(userName:string, password:string):Observable<boolean>{
-    return this.http.post<boolean>(`${this.URL}/api/users/${userName}`, { password })
+  validateUser(userName:string, password:string):Observable<{validate:boolean, id:string}>{
+    return this.http.post<{validate:boolean, id:string}>(`${this.URL}/api/users/${userName}`, { password })
   }
   
-  createUser(user: IUser): Observable<string>{
-    return this.http.post<string>(this.URL + "/api/createUser",user,{observe:"body"})
+  createUser(user: IUser): Observable<any>{
+    return this.http.post<any>(this.URL + "/api/createUser",user,{observe:"body"})
+  }
+
+  getID(userName:string):Observable<string>{
+    return this.http.get<string>(`${this.URL}/api/usersID/${userName}`)
   }
 }

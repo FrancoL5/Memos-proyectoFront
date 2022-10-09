@@ -61,9 +61,10 @@ export class SingUpComponent implements OnDestroy {
 			password: bcrypt.hashSync(password, 10),
 			country,
 			last_name,
-		}).subscribe((data) => {
+		}).subscribe((user) => {
 			sessionStorage.setItem("validUser", "true")
-			sessionStorage.setItem('id', data);
+			sessionStorage.setItem('id', user.user_id)
+			sessionStorage.setItem('userName', user.user_name)
 			this.router.navigate(['/user']).then(()=>{
 				window.location.reload();
 			})

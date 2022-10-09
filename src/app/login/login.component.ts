@@ -4,21 +4,21 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../usuarios.service';
 import { Subscription } from 'rxjs';
 
-
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnDestroy {
-  loginSubscription!:Subscription
+	loginSubscription!: Subscription;
+	getIDSubscription!: Subscription;
+	validUser!: boolean;
 
-   validUser!:boolean
-
-
-	constructor(private fb: FormBuilder, private Usuario: UsuarioService, private router:Router) {}
-
-
+	constructor(
+		private fb: FormBuilder,
+		private Usuario: UsuarioService,
+		private router: Router
+	) {}
 
 	form: FormGroup = this.fb.group({
 		nombreUsuario: [, [Validators.required]],
@@ -30,24 +30,27 @@ export class LoginComponent implements OnDestroy {
 			this.form.markAllAsTouched();
 			return;
 		}
-    const userName = this.form.controls['nombreUsuario'].value
+		const userName = this.form.controls['nombreUsuario'].value;
+
 		this.loginSubscription = this.Usuario.validateUser(
-			this.form.controls['nombreUsuario'].value,
+			userName,
 			this.form.controls['contrasena'].value
-		).subscribe((valid) => {
-			if(valid){
-				sessionStorage.setItem('validUser', String(valid));
-				sessionStorage.setItem('id', userName);
-				this.router.navigate(['/user']).then(()=>{
+		).subscribe((data) => {
+			if (data) {
+				sessionStorage.setItem('validUser', String(data.validate));
+				sessionStorage.setItem('userName', userName);
+				sessionStorage.setItem('id', data.id);
+				this.router.navigate(['/user']).then(() => {
 					window.location.reload();
-				})
+				});
 			}
-			this.validUser = !valid
-			this.form.reset()
+
+			this.validUser = !data.validate;
+			this.form.reset();
 		});
 	}
 
-  ngOnDestroy(): void {
-    this.loginSubscription.unsubscribe()
-  }
+	ngOnDestroy(): void {
+		this.loginSubscription.unsubscribe();
+	}
 }

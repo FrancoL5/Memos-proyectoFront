@@ -1,1 +1,51 @@
-<p>userprofile works!</p>
+<mat-card class="profileCard">
+	<div class="messagesContainer">
+		<div class="sideVar">
+			<a
+				mat-raised-button
+				color="primary"
+				(click)="obtenerMensajes('inbox')"
+				>Recibidos</a
+			>
+			<a
+				mat-raised-button
+				color="primary"
+				(click)="obtenerMensajes('sent')"
+				>Enviados</a
+			>
+		</div>
+		<table
+			mat-table
+			[dataSource]="mensajesRecibidos"
+			class="mat-elevation-z8"
+		>
+			<!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+			<!-- Position Column -->
+			<ng-container matColumnDef="receiver">
+				<th mat-header-cell *matHeaderCellDef>Destinatario</th>
+				<td mat-cell *matCellDef="let message">
+					{{ message.receiver }}
+				</td>
+			</ng-container>
+
+			<ng-container matColumnDef="content">
+				<th mat-header-cell *matHeaderCellDef>Contenido</th>
+				<td mat-cell *matCellDef="let message">
+					{{ message.content }}
+				</td>
+			</ng-container>
+
+			<ng-container matColumnDef="time">
+				<th mat-header-cell *matHeaderCellDef>Fecha</th>
+				<td mat-cell *matCellDef="let message">
+					{{ message.time }}
+				</td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+		</table>
+	</div>
+</mat-card>
