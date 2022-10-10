@@ -1,0 +1,54 @@
+.containerSelect{
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    width: 100%;
+}
+.cardContainer{
+    display: flex;
+    justify-content: center;
+    /* padding: 0.25rem; */
+    /* width: 25rem; */
+}
+
+.formCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* max-width: 25rem; */
+    width: 50rem;
+    padding: 2rem;
+}
+
+.invalidInput{
+    color: #ff1744;
+}
+
+.listReceivers{
+    border: grey;
+    border-style: ridge;
+    width: 20rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.agregarReceiver{
+    width: 8rem;
+    height: 3rem;
+}
+.textareaContent{
+    width:20rem;
+
+}
+
+.formContent{
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sendForm{
+    width: 50%;
+    height: 3rem;
+}

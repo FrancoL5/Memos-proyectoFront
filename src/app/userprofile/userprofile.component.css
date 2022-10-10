@@ -1,5 +1,5 @@
 .profileCard{
-    width: 50rem;
+    width: 100rem;
 }
 
 .sideVar {
@@ -17,4 +17,17 @@
 
 table{
 	width: 100%;
+	padding: 1rem
+}
+#sendMessage{
+	align-self: flex-end;
+}
+
+.mainContainer{
+	display: flex;
+	justify-content: center;
+}
+
+.tableMessageContent{
+	overflow: auto
 }

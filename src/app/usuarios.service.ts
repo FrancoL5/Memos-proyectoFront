@@ -24,4 +24,8 @@ export class UsuarioService {
   getID(userName:string):Observable<string>{
     return this.http.get<string>(`${this.URL}/api/usersID/${userName}`)
   }
+
+  getUsers(userName:string|"ALL"):Observable<{user_name:string}[]>{
+    return this.http.get<{user_name:string}[]>(`${this.URL}/api/${userName}`)
+  }
 }

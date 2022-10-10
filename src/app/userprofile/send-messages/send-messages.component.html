@@ -1,0 +1,60 @@
+<div class="cardContainer">
+	<mat-card class="formCard">
+		<mat-card-title>Enviar Memo</mat-card-title>
+		<form class="formContent" [formGroup]="form" (ngSubmit)="sendMessage()">
+			<div class="containerSelect">
+				<mat-form-field>
+					<mat-label>Elija Destinatarios</mat-label>
+					<mat-select
+						matNativeControl
+						name="receiver"
+						formControlName="receiver"
+						appearance="fill"
+					>
+						<div *ngFor="let user of usuarios">
+							<mat-option value="{{ user.user_name }}">{{
+								user.user_name
+							}}</mat-option>
+						</div>
+					</mat-select>
+				</mat-form-field>
+				<br />
+
+				<button class="agregarReceiver" type="button" (click)="agregarUser()" mat-raised-button>
+					Agregar
+				</button>
+			</div>
+            <p
+                class="invalidInput"
+                *ngIf="
+                    form.controls['receiver'].errors &&
+                    form.controls['receiver'].touched
+                "
+            >
+                *Debe elegir por lo menos un destinatario
+            </p>
+            <div *ngIf="receivers.length" class="listReceivers">
+                <mat-list *ngFor="let receiver of receivers" role="list">
+                    <mat-list-item  role="listitem">{{ receiver }}</mat-list-item>
+                </mat-list>
+    
+    
+            </div>
+			<mat-form-field class="textareaContent" appearance="fill">
+				<mat-label>Contenido del Memo</mat-label>
+				<textarea
+					name="content"
+					formControlName="content"
+					matInput
+
+				> </textarea>
+			</mat-form-field>
+
+            <button type="submit" color="accent" class="sendForm" mat-raised-button>
+                Enviar
+            </button>
+		</form>
+        
+
+	</mat-card>
+</div>

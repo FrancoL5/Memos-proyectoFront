@@ -19,6 +19,7 @@ export class NavBarComponent implements OnInit {
       this.validUser = true
 		} else {
       this.validUser = false
+	//   this.router.navigate(["/login"])
 		}
 	}
 	logOut (){

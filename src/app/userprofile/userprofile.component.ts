@@ -14,7 +14,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
 	public id: string | null = sessionStorage.getItem('id');
 	public mensajesRecibidos!: IMessage[];
 	public mensajesRecivSubscription!: Subscription;
-	displayedColumns: string[] = ['receiver', 'content', 'time'];
+	displayedColumns: string[] = ["sendBy",'receiver', 'content', 'time'];
 
 	ngOnInit(): void {
 		if (this.id) {
@@ -30,7 +30,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
 				.then(() => window.location.reload());
 		}
 	}
-
+  
 	obtenerMensajes(flow: 'sent' | 'inbox') {
 		this.mensajesRecivSubscription.unsubscribe();
 		if (this.id) {
@@ -38,7 +38,7 @@ export class UserprofileComponent implements OnInit, OnDestroy {
 				.getMessages(this.id, flow)
 				.subscribe((messages) => {
 
-					this.mensajesRecibidos = messages.map(message => ({...message, time: new Date(message.time).toLocaleDateString()}));
+					this.mensajesRecibidos = messages.map(message => ({...message, time: new Date(message.time!).toLocaleDateString()}));
 				});
 		} else {
 			sessionStorage.clear();
@@ -47,7 +47,6 @@ export class UserprofileComponent implements OnInit, OnDestroy {
 				.then(() => window.location.reload());
 		}
 	}
-
 	ngOnDestroy(): void {
 		this.mensajesRecivSubscription.unsubscribe();
 	}
