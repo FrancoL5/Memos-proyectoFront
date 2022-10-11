@@ -26,7 +26,7 @@ export class NavBarComponent implements OnInit {
 		sessionStorage.removeItem("validUser")
 		sessionStorage.removeItem("id")
 		sessionStorage.removeItem("userName")
-		this.ngOnInit()
 		this.router.navigate(['/login'])
+		this.ngOnInit()
 	}
 }

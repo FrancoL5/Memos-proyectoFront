@@ -7,6 +7,6 @@ import { UsuarioService } from './usuarios.service';
 	styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-	title = "memos Angular"
+	title = "Memos Angular"
 
 }

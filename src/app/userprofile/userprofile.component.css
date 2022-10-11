@@ -17,7 +17,8 @@
 
 table{
 	width: 100%;
-	padding: 1rem
+	padding: 1rem;
+	gap:2rem;
 }
 #sendMessage{
 	align-self: flex-end;
@@ -27,7 +28,32 @@ table{
 	display: flex;
 	justify-content: center;
 }
+.mat-column-content{
+	width: 10%;
+}
+.mat-column-receiver{
+	padding: 0 1rem;
+	width: 10%;
+}
+.mat-column-sendBy{
+	padding: 0 1rem;
+	width: 20%;
+}
+.mat-column-time{
+	padding: 0 1rem;
 
-.tableMessageContent{
-	overflow: auto
+	width: 20%;
+}
+.mat-column-deleteMessage{
+	padding: 0 1rem;
+	width: 20%;
+}
+.messageContentP{
+	max-width: 20rem;
+	word-wrap: break-word;
+}
+
+mat-expansion-panel{
+	width: 20rem;
+	padding: 0;
 }

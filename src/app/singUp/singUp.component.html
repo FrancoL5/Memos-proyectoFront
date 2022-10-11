@@ -60,12 +60,18 @@
                 </p>
                 <br>
                 <label for="pais">Pais</label>
-                <input
-                    type="text"
-                    placeholder="Ingresa tu Pais"
-                    formControlName="pais"
-                    name="pais"
-                />
+                <mat-form-field>
+					<mat-label>Elija un pais</mat-label>
+					<mat-select
+						matNativeControl
+						name="pais"
+						formControlName="pais"
+						appearance="fill">
+					        <mat-option value="Argentina">Argentina</mat-option>
+					        <mat-option value="Chile">Chile</mat-option>
+					        <mat-option value="Brasil">Brasil</mat-option>
+					</mat-select>
+				</mat-form-field>
                 <p class="invalidInput" *ngIf="form.controls['pais'].errors && form.controls['pais'].touched">
                     debe ser un pais valido
                 </p>

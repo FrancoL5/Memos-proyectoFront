@@ -54,15 +54,31 @@
 		
 					<ng-container  matColumnDef="content">
 						<th  mat-header-cell *matHeaderCellDef>Contenido</th>
-						<td mat-cell *matCellDef="let message">
+						<!-- <td mat-cell *matCellDef="let message">
 							{{ message.content.length > 40 ? (message.content.slice(0, 80) + '...') : message.content }}
-						</td>
+						</td> -->
+						<mat-accordion  mat-cell *matCellDef="let message">
+							<mat-expansion-panel class="acordionTableContent" hideToggle>
+							  <mat-expansion-panel-header >
+								<mat-panel-title>
+									{{ message.content.length > 30 ? message.content.slice(0, 30) + '...' : message.content }}
+								</mat-panel-title>
+							  </mat-expansion-panel-header>
+							  <p *ngIf="(message.content.length > 30)" class="messageContentP">{{message.content}}</p>
+							</mat-expansion-panel>
+						</mat-accordion>
 					</ng-container>
 		
 					<ng-container matColumnDef="time">
 						<th mat-header-cell *matHeaderCellDef>Fecha</th>
 						<td mat-cell *matCellDef="let message">
 							{{ message.time }}
+						</td>
+					</ng-container>
+					<ng-container matColumnDef="deleteMessage">
+						<th mat-header-cell *matHeaderCellDef>Borrar Mensaje</th>
+						<td mat-cell *matCellDef="let message">
+							<button type="button" (click)="deleteMessage(message.id)" mat-button color="primary">Borrar</button>
 						</td>
 					</ng-container>
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

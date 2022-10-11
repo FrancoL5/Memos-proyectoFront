@@ -21,10 +21,14 @@ export class MessagesService {
 	): Observable<boolean> {
 		return this.http.post<boolean>(
 			`${this.URL}/messages`,
-			[{ ...content, user_id: id, 
+			{ ...content, user_id: id, 
 				user_name: userName 
-			}],
+			},
 			{ observe: 'body' }
 		);
+	}
+
+	deleteMessage(id:number):Observable<boolean>{
+		return this.http.post<boolean>(`${this.URL}/messages/delete`,{id},{observe:"body"})
 	}
 }

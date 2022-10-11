@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {MatInputModule} from '@angular/material/input';
 		BrowserAnimationsModule,
 		MatListModule,
 		MatInputModule,
+		MatExpansionModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

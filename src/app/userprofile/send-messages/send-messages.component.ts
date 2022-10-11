@@ -36,14 +36,13 @@ export class SendMessagesComponent implements OnInit, OnDestroy {
 	});
 
 	sendMessage() {
-		console.log('invalido');
 		if (this.form.invalid) {
 			this.form.markAllAsTouched();
 			return;
 		}
 		const message = {
 			content: this.form.value.content,
-			receiver: this.form.value.receiver,
+			receiver: this.receivers,
 		};
 		this.sendMessageSubscription = this.Mensaje.sendMessages(
 			sessionStorage.getItem('userName')!,
@@ -52,17 +51,16 @@ export class SendMessagesComponent implements OnInit, OnDestroy {
 		).subscribe((valid) => {
 			console.log(valid);
 		});
+
+		this.router.navigate(['/user']);
 	}
 
 	agregarUser() {
 		if (
 			this.form.value.receiver &&
-			!this.receivers.find(
-				(receiver) => receiver === this.form.value.receiver
-			)
-		) {
-			this.receivers.push(this.form.value.receiver);
-		}
+			!this.receivers.find((receiver) => receiver === this.form.value.receiver)) {
+					this.receivers.push(this.form.value.receiver);
+				}
 	}
 
 	ngOnDestroy(): void {
